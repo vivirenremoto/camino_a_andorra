@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Camino a Andorra - Se un auténtico youtuber</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+
+
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+
+
+    <meta property="og:image" content="static/social.png">
+    <meta property="og:image:secure_url" content="static/social.png">
+    <meta property="og:image:alt" content="Camino a Andorra - Se un auténtico youtuber">
+    <meta property="og:image:type" content="image/png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Camino a Andorra - Se un auténtico youtuber">
+    <meta name="twitter:image" content="static/social.png">
+
+</head>
+
+<body>
+
+
+
+    <style>
+        * {
+            font-family: 'VT323', monospace;
+            text-transform: uppercase;
+        }
+
+        body {
+            background: black;
+            overflow-x: hidden;
+            font-size: 70px;
+        }
+
+        h2 {
+            margin: 0;
+            font-size: 75px;
+        }
+
+        button {
+            border: 5px black solid;
+            color: black;
+            background: white;
+            padding: 5px 30px;
+            display: inline-block;
+            font-size: 30px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .btn_control {
+            display: none;
+            font-size: 80px;
+            color: white;
+            cursor: pointer;
+            position: fixed;
+        }
+
+        #btn_left {
+            left: 0;
+            bottom: 0;
+        }
+
+        #btn_right {
+            right: 0;
+            bottom: 0;
+        }
+
+        #time {
+            color: cyan;
+            position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            font-size: 70px;
+        }
+
+        #score {
+            text-align: center;
+            z-index: 2;
+            position: fixed;
+            top: 40px;
+            left: 0;
+            right: 0;
+            font-size: 180px;
+            color: white;
+        }
+
+        #select_youtuber img {
+            width: 100px;
+            height: 100px;
+        }
+
+        #select_youtuber button {
+            margin: 0 10px 20px 0;
+        }
+
+        #btn_left,
+        #btn_right {
+            margin-bottom: -30px;
+        }
+
+        /* intro */
+        #intro {
+            background: url('static/bg_intro.gif');
+            background-size: cover;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            text-align: center;
+        }
+
+        #intro div {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-left: -300px;
+            margin-top: -150px;
+        }
+
+        #intro button {
+            margin-top: 50px;
+        }
+
+        #intro img {
+            width: 600px;
+            height: 219px;
+        }
+
+        /* youtubers */
+
+        #select_youtuber {
+            display: none;
+            background: url('static/bg_intro.gif');
+            background-size: cover;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            text-align: center;
+        }
+
+        #select_youtuber div {
+            padding: 20px;
+        }
+
+        #select_youtuber img {
+            width: 80px;
+            height: 80px;
+        }
+
+        /* car */
+        #select_car {
+            display: none;
+            background: url('static/bg_intro.gif');
+            background-size: cover;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            text-align: center;
+        }
+
+        #select_car div {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-left: -400px;
+            margin-top: -200px;
+        }
+
+        #select_car img {
+            margin-right: 100px;
+        }
+
+        /* game */
+
+        #car {
+            position: fixed;
+            bottom: 200px;
+            left: 50%;
+            margin-left: -125px;
+            width: 250px;
+            height: 140px;
+        }
+
+        /* result */
+
+        #result_winner,
+        #result_loser {
+            color: white;
+            text-align: center;
+            background: black;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: none;
+        }
+
+
+
+        @media screen and (max-width: 480px) {
+
+            body {
+                font-size: 20px;
+            }
+
+            .btn_control {
+                font-size: 100px;
+                display: block;
+            }
+
+            button {
+                font-size: 40px;
+            }
+
+            #time {
+                font-size: 40px;
+            }
+
+            #score {
+                font-size: 70px;
+            }
+
+            h3 {
+                font-size: 30px;
+                margin: 0;
+            }
+
+            /* intro */
+            #intro div {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                margin-left: -175px;
+                margin-top: -100px;
+            }
+
+            #intro img {
+                width: 350px;
+                height: 127px;
+            }
+
+            /* youtubers */
+
+            #select_youtuber {
+                padding: 40px 20px;
+                overflow-y: scroll;
+            }
+
+            /* car */
+
+            #select_car div {
+                width: 100%;
+                padding: 40px 0;
+                position: inherit;
+                top: inherit;
+                left: inherit;
+                margin-left: inherit;
+                margin-top: inherit;
+            }
+
+            #select_car img {
+                width: 300px;
+                display: block;
+                margin: auto;
+                margin-top: 60px;
+                margin-right: auto;
+            }
+
+            /* game */
+
+
+            #car {
+                position: fixed;
+                bottom: 200px;
+                left: 55%;
+                margin-left: -80px;
+                width: 160px;
+                height: 85px;
+            }
+
+            /* result */
+
+            #result_winner img,
+            #result_loser img {
+                max-width: 100%;
+            }
+
+        }
+    </style>
+
+    <div id="intro">
+        <div>
+            <img src="static/logo2.png?"><br>
+            <button id="btn_start">START</button>
+            <!--<button id="btn_info">INFO</button>-->
+        </div>
+    </div>
+
+
+
+
+
+    <div id="select_youtuber">
+        <div>
+            <h2>elige youtuber</h2>
+            <br>
+
+            <button onclick="selectYoutuber('rubius')"><img src="static/avatares/rubius.png"><br>jimdoblas</button>
+
+            <button onclick="selectYoutuber('grefg')"><img src="static/avatares/grefg.png"><br>GREFGORIO</button>
+
+            <button onclick="selectYoutuber('lolito')"><img src="static/avatares/lolito.png"><br>POLLITO</button>
+
+            <button onclick="selectYoutuber('willyrex')"><img src="static/avatares/willyrex.png"><br>MIAGIREX</button>
+
+            <button onclick="selectYoutuber('vegetta')"><img src="static/avatares/vegetta777.png"><br>BAGUETTO</button>
+
+
+
+            <button onclick="selectYoutuber('alexby')"><img src="static/avatares/alexby.png?2"><br>ALEXBOYZ</button>
+
+
+            <button onclick="selectYoutuber('staxx')"><img src="static/avatares/staxx.png"><br>STEGG</button>
+
+            <button onclick="selectYoutuber('elmillor')"><img src="static/avatares/elmillor.png"><br>ElmenoR</button>
+
+            <button onclick="selectYoutuber('Invicthor')"><img src="static/avatares/invicthor.png"><br>invitro</button>
+
+            <button onclick="selectYoutuber('zorman')"><img src="static/avatares/zorman.png"><br>morenito19</button>
+
+            <button onclick="selectYoutuber('elxokas')"><img src="static/avatares/elxokas.png"><br>elxuxes</button>
+
+            <button onclick="selectYoutuber('alexcapo')"><img src="static/avatares/alexcapo.png?"><br>alexchavo</button>
+
+
+            <button onclick="selectYoutuber('broncano')"><img src="static/avatares/broncano.png"><br>forky</button>
+
+
+            <button onclick="selectYoutuber('guinxu')"><img src="static/avatares/guinxu.png"><br>chinxu</button>
+
+            <button onclick="selectYoutuber('alvamajo')"><img src="static/avatares/alvamajo.png"><br>alvamalo</button>
+
+            <button onclick="selectYoutuber('cristinini')"><img
+                    src="static/avatares/cristinini.png"><br>chonini</button>
+
+            <button onclick="selectYoutuber('ibai')"><img src="static/avatares/ibai.png"><br>ebai</button>
+
+
+            <button onclick="selectYoutuber('jordiwild')"><img
+                    src="static/avatares/jordiwild.png"><br>jesuswild</button>
+
+            <button onclick="selectYoutuber('auronplay')"><img
+                    src="static/avatares/auronplay.png"><br>gañanplay</button>
+
+            <button onclick="selectYoutuber('picodeoro')"><img src="static/avatares/picodeoro.png"><br>picorro</button>
+
+
+        </div>
+    </div>
+
+
+
+    <div id="select_car">
+        <div>
+            <h2>elige Coche</h2>
+            <br>
+
+            <img src="static/lambo.png?" style="cursor:pointer" onclick="selectCar('lambo')">
+            <img src="static/ferrari2.png" style="cursor:pointer" onclick="selectCar('ferrari2')">
+        </div>
+    </div>
+
+
+
+    <div id="game"
+        style="display:none;background:black url('static/road6.gif') no-repeat;background-size:auto 100%;background-position:top center;position:fixed;left:0;right:0;top:0;bottom:0;text-align:center;">
+
+
+        <div id="time">1:00</div>
+
+
+        <div id="score">x</div>
+
+        <img id="enemy" src="static/agencia_.png"
+            style="display:none;position:fixed;bottom:0;width:100px;margin-left:-50px;margin-top:50px;border-radius:100px;">
+
+
+
+
+
+        <img id="car" src="static/ferrari.png?">
+
+
+        <div id="btn_left" class="btn_control">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left-square-fill" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                    d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm9.5 8.5a.5.5 0 0 0 0-1H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5z" />
+            </svg>
+        </div>
+
+        <div id="btn_right" class="btn_control">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-square-fill" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                    d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm2.5 8.5a.5.5 0 0 1 0-1h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5z" />
+            </svg>
+        </div>
+
+    </div>
+
+    <div id="result_winner">
+
+        <h2>WELCOME</h2>
+        <br>
+        <img src="static/welcome.png">
+        <br><br>
+
+        <button onclick="location.reload();">¿Repetir?</button>
+        <button onclick="share()">Compartir</button>
+    </div>
+
+    <div id="result_loser">
+        <h2 style="color:red">GAME OVER</h2>
+        <h3>NO TE PUEDES QUEDAR</h3>
+        <h3>NECESITAS 15.000€ DE DEPÓSITO</h3>
+        <br>
+        <img src="static/gameover.png">
+        <br><br>
+
+
+        <button onclick="location.reload();">¿Repetir?</button>
+        <button onclick="share()">Compartir</button>
+    </div>
+
+
+    <audio id="bg_music1" loop>
+        <source src="static/music1.mp3" type="audio/mp3">
+    </audio>
+
+
+    <audio id="bg_music2" loop>
+        <source src="static/music2.mp3" type="audio/mp3">
+    </audio>
+
+
+
+    <script>
+        var time_left = 60;
+        var enemy_item;
+        var car_pos = 0;
+        var enemy_pos = 0;
+        var car_width = $('#car').width();
+        var score;//1000000;
+        var timer_game;
+        var screen_height = $(document).height();
+        var screen_width = $(document).width();
+        var screen_height_half = (screen_height / 2);
+        var start_round = false;
+
+
+        var followers = {
+            'rubius': 39500000,
+            'grefg': 16400000,
+            'willyrex': 16500000,
+            'vegetta': 32000000,
+            'alexby': 8870000,
+            'staxx': 5720000,
+            'ampeter': 5850000,
+            'elmillor': 242000,
+            'invicthor': 347000,
+            'zorman': 1870000,
+            'elxokas': 84500,
+            'alexcapo': 1730000,
+            'broncano': 937000,
+            'guinxu': 528000,
+            'alvamajo': 247000,
+            'cristinini': 989000,
+            'ibai': 502000,
+            'jordiwild': 10200000,
+            'auronplay': 26900000,
+            'picodeoro': 101000
+        };
+
+
+        var music_playing1 = false;
+
+        var music1 = document.getElementById('bg_music1');
+        music1.volume = 0.5;
+
+        var music2 = document.getElementById('bg_music2');
+        music2.volume = 0.5;
+
+        $('body').click(function () {
+            playMusic1();
+        });
+
+        $('#btn_start').click(function () {
+            showYoutubers();
+        });
+
+
+        $('#btn_left').click(function () {
+            moveLeft();
+
+        });
+
+        $('#btn_right').click(function () {
+            moveRight();
+        });
+
+        function playMusic1() {
+            if (!music_playing1) {
+                music_playing1 = true;
+                music1.play();
+            }
+        }
+
+
+
+        function showYoutubers() {
+            $('#intro').hide();
+            $('#select_youtuber').show();
+
+        }
+
+        function selectYoutuber(name) {
+
+
+            if (name == 'rubius') {
+                score = 4000000;
+            } else {
+                var seguidores = followers[name];
+                score = (seguidores * 4000000) / followers.rubius;
+                score = parseInt(score);
+            }
+
+
+            //score = -1;
+
+            updateScore(0);
+
+            showCars();
+        }
+
+        function showCars() {
+            $('#select_youtuber').hide();
+            $('#select_car').show();
+
+        }
+
+        function selectCar(car_name) {
+
+            $('#car').attr('src', 'static/' + car_name + '.png?v=1');
+
+            setTimeout(function () {
+
+                music1.pause();
+
+                music2.play();
+
+                startGame();
+            }, 500);
+
+        }
+
+        function startGame() {
+            $('#select_car').hide();
+            $('#game').show();
+
+
+
+
+
+            setInterval(function () {
+
+                time_left--;
+
+
+                if (time_left == 0) {
+                    endGame();
+                }
+
+                if (time_left < 10) time_left = '0' + time_left;
+
+                $('#time').html('0:' + time_left);
+            }, 1000);
+
+
+
+
+            setInterval(function () {
+                start_round = true;
+                addEnemy();
+
+
+
+            }, 2500);
+
+
+            timer_game = setInterval(function () {
+                var enemy_top = $('#enemy').offset().top;
+
+
+
+
+                if (start_round && enemy_top && enemy_top <= screen_height_half) {
+
+                    console.log('enemy ' + enemy_pos + ' == car ' + car_pos);
+
+                    if (enemy_pos == car_pos) {
+                        start_round = false;
+
+
+
+
+
+                        updateScore(score);
+
+                    }
+                }
+
+            }, 500);
+
+
+
+
+
+
+        }
+
+
+        function moveLeft() {
+            if (car_pos == 1) {
+                car_pos = 0;
+            }
+            updateCar();
+        }
+
+
+        function moveRight() {
+            if (car_pos == 0) {
+                car_pos = 1;
+            }
+            updateCar();
+        }
+
+
+        function updateCar() {
+            var car_way = -75;
+
+            if (car_pos == 0) {
+                car_way -= car_width / 1.2;
+            } else if (car_pos == 1) {
+                car_way += car_width / 2;
+            }
+
+            $('#car').css('margin-left', car_way + 'px');
+        }
+
+        function updateScore(value) {
+
+
+            var score_format;
+            var score_color;
+
+            if (value) {
+
+
+                if (enemy_item == 1) {
+                    score_format = '-50%';
+                    score = score / 2;
+                    score_color = 'red';
+
+
+                } else if (enemy_item == 2) {
+
+                    var random2 = Math.floor(Math.random() * 3);
+
+                    if (random2 == 1) {
+
+                        var plus = (score / 4);
+                        if (plus < 0) plus = plus * -1;
+
+                        score_format = '+25%';
+                        score = parseInt(score + plus);
+                        score_color = '#00ff00';
+                    } else if (random2 == 2) {
+                        score_format = '+1€';
+                        score = score + 1;
+                        score_color = '#00ff00';
+                    } else {
+                        score_format = '-25%';
+                        score = parseInt(score - (score / 4));
+                        score_color = 'red';
+                    }
+
+
+
+
+                } else {
+
+                    score_format = '+10.000€';
+                    score += 10000;
+                    score_color = '#00ff00';
+                }
+
+
+                $('#score').html(score_format).css('color', score_color);
+
+
+
+                setTimeout(function () {
+
+
+                    score_format = score.toLocaleString('de-DE', { maximumFractionDigits: 0 }) + '&euro;';
+
+                    $('#score').html(score_format).css('color', 'white');
+                }, 1000);
+
+            } else {
+                score_format = score.toLocaleString('de-DE', { maximumFractionDigits: 0 }) + '&euro;';
+                $('#score').html(score_format).css('color', 'white');
+            }
+
+
+        }
+
+        function share() {
+            window.open('https://twitter.com/intent/tweet?text=' + document.title + '&tw_p=tweetbutton&url=' + document.location.href);
+
+        }
+
+        function endGame() {
+            music2.pause();
+            music1.play();
+
+            $('#game').hide();
+
+            if (score > 15000) {
+                $('#result_winner').show();
+            } else {
+                $('#result_loser').show();
+            }
+
+        }
+
+        function addEnemy() {
+
+
+
+            enemy_item = Math.floor(Math.random() * (3 + 1));//Math.round(Math.random());
+            enemy_pos = Math.round(Math.random());
+            var enemy_start;
+            var enemy_end;
+
+
+            if (screen_width >= 800) {
+
+
+                if (enemy_pos) {
+                    enemy_start = (screen_width / 4) * 3;
+                    enemy_end = '-=' + (screen_width / 4);
+                } else {
+                    enemy_start = (screen_width / 4);
+                    enemy_end = '+=' + ((screen_width / 4) + 100);
+                }
+
+            } else {
+
+
+
+
+                if (enemy_pos) {
+                    enemy_start = screen_width;
+                    enemy_end = '-=' + (screen_width / 2);
+                } else {
+                    enemy_start = 0;
+                    enemy_end = '+=' + ((screen_width / 2) + 100);
+                }
+
+            }
+
+
+
+
+
+            if (enemy_item == 1) {
+                $('#enemy').attr('src', 'static/agencia_.png');
+            } else if (enemy_item == 2) {
+                $('#enemy').attr('src', 'static/random.png');
+            } else {
+                $('#enemy').attr('src', 'static/twitch.png');
+            }
+
+
+            $('#enemy').css('opacity', 1).css('width', '200px').css('height', '200px').css('top', (screen_height - 100) + 'px').css('left', enemy_start + 'px').show();
+
+
+            $('#enemy').animate({
+                'top': '-=' + screen_height_half,
+                'left': enemy_end,
+                'opacity': '0',
+                'width': '1',
+                'height': '1',
+            }, 2000, function () {
+                $('#enemy').fadeOut('fast');
+            });
+
+        }
+
+
+
+
+
+
+
+
+
+
+        $(function () {
+
+            $("body").click(function () {
+                playMusic1();
+            });
+
+            $("body").keydown(function (e) {
+                if (e.keyCode == 37) {
+                    moveLeft();
+                } else if (e.keyCode == 39) {
+                    moveRight();
+                }
+            });
+
+
+            updateCar();
+
+            //startGame();
+
+
+
+
+        });
+
+
+    </script>
+
+</body>
+
+</html>
