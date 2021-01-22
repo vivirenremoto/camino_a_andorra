@@ -497,6 +497,7 @@
         var screen_height = $(document).height();
         var screen_width = $(document).width();
         var screen_height_half = (screen_height / 2);
+        var screen_height_half_half = (screen_height / 4) * 3;
         var start_round = false;
 
 
@@ -647,12 +648,12 @@
 
 
 
-                if (start_round && enemy_top && enemy_top <= screen_height_half) {
+                if (start_round && enemy_top && enemy_top <= screen_height_half_half) {
 
                     console.log('enemy ' + enemy_pos + ' == car ' + car_pos);
 
+                    start_round = false;
                     if (enemy_pos == car_pos) {
-                        start_round = false;
 
 
 
