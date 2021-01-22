@@ -318,11 +318,14 @@
     </style>
 
 
-    <a href="https://twitter.com/vivirenremoto" target="_blank"
-        style="font-size:30px;position:fixed;right:10px;top:10px;z-index:2;color:white;text-decoration:none;">by
-        @vivirenremoto</a>
+
 
     <div id="intro">
+
+        <a href="https://twitter.com/vivirenremoto" target="_blank"
+            style="font-size:30px;position:fixed;right:10px;top:10px;z-index:2;color:white;text-decoration:none;">by
+            @vivirenremoto</a>
+
         <div>
             <img class="logo" src="static/logo2.png?"><br>
             <button id="btn_start">START</button>
@@ -810,10 +813,10 @@
 
                 if (enemy_pos) {
                     enemy_start = screen_width;
-                    enemy_end = '-=' + (screen_width / 2);
+                    enemy_end = '-=' + ((screen_width / 2) - 20);
                 } else {
                     enemy_start = 0;
-                    enemy_end = '+=' + ((screen_width / 2) + 100);
+                    enemy_end = '+=' + ((screen_width / 2) + 70);
                 }
 
             }
