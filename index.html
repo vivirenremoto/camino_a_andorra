@@ -190,16 +190,23 @@
             text-align: center;
         }
 
-        #select_car div {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            margin-left: -400px;
-            margin-top: -200px;
+        @media screen and (min-width: 480px) {
+            #select_car div {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                margin-left: -400px;
+                margin-top: -200px;
+            }
+
+            #select_car img {
+                margin: 0 35px;
+                width: 210px;
+            }
         }
 
-        #select_car img {
-            margin-right: 100px;
+        #select_car div {
+            padding: 40px 0;
         }
 
         /* game */
@@ -280,21 +287,19 @@
 
             /* car */
 
+            #select_car {
+                overflow-y: scroll;
+            }
+
             #select_car div {
-                width: 100%;
-                padding: 40px 0;
-                position: inherit;
-                top: inherit;
-                left: inherit;
-                margin-left: inherit;
-                margin-top: inherit;
+                overflow-y: scroll;
             }
 
             #select_car img {
-                width: 300px;
+                width: 220px;
                 display: block;
                 margin: auto;
-                margin-top: 60px;
+                margin-bottom: 50px;
                 margin-right: auto;
             }
 
@@ -420,6 +425,7 @@
 
             <img src="static/lambo.png?" style="cursor:pointer" onclick="selectCar('lambo')">
             <img src="static/ferrari2.png" style="cursor:pointer" onclick="selectCar('ferrari2')">
+            <img src="static/maserati2.png" style="cursor:pointer" onclick="selectCar('maserati2')">
         </div>
     </div>
 
