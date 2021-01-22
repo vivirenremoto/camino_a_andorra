@@ -328,8 +328,7 @@
 
         <div>
             <img class="logo" src="static/logo2.png?"><br>
-            <button id="btn_start">START</button>
-            <!--<button id="btn_info">INFO</button>-->
+            <button id="btn_start">EMPEZAR</button>
         </div>
         <img src="static/car.png?v" style="position:fixed;bottom:10px;left:50%;margin-left:-162px;">
     </div>
@@ -715,7 +714,13 @@
 
                 } else if (enemy_item == 2) {
 
+
+                    var random2_aux = random2;
+
                     var random2 = Math.floor(Math.random() * 3);
+
+                    if (random2 == random2_aux) random2 = Math.floor(Math.random() * 3);
+
 
                     if (random2 == 1) {
 
@@ -788,9 +793,17 @@
         function addEnemy() {
 
 
-
+            var enemy_item_aux = enemy_item;
             enemy_item = Math.floor(Math.random() * (3 + 1));//Math.round(Math.random());
+
+            if (enemy_item == enemy_item_aux) enemy_item = Math.floor(Math.random() * (3 + 1));
+
+            var enemy_pos_aux = enemy_pos;
             enemy_pos = Math.round(Math.random());
+
+            if (enemy_pos == enemy_pos_aux) enemy_pos = Math.round(Math.random());
+
+
             var enemy_start;
             var enemy_end;
 
