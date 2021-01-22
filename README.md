@@ -1,5 +1,7 @@
 # Camino a Andorra - Se un auténtico youtuber
  
-[Website](https://vivirenremoto.github.io/camino_a_andorra/)
+[Web - Juego](https://vivirenremoto.github.io/camino_a_andorra/)
 
 [Autor](https://twitter.com/vivirenremoto)
+
+![Camino a Andorra - Se un auténtico youtuber](https://vivirenremoto.github.io/camino_a_andorra/static/social.png)
