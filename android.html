@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>🔥🔥🔥 Juego - Camino a Andorra - Se un auténtico youtuber 🔥🔥🔥 #caminoandorra</title>
+    <title>🔥🔥🔥 Juego - Camino a Andorra - Se un auténtico youtuber 🔥🔥🔥 #caminoaandorra</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
@@ -812,7 +812,7 @@
         }
 
         function share() {
-            window.open('https://twitter.com/intent/tweet?text=' + document.title + '&tw_p=tweetbutton&url=' + document.location.href);
+            window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + '&tw_p=tweetbutton&url=' + document.location.href);
 
         }
 
