@@ -813,8 +813,12 @@
 
         function share() {
             var app_url = 'https://play.google.com/store/apps/details?id=com.CAMINO.A.ANDORRA';
-            window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + '&tw_p=tweetbutton&url=' + app_url);// + document.location.href);
-
+          
+            if(navigator.share !== undefined) {
+                navigator.share({title: document.title, text: app_url, url: app_url});
+            }else{
+                window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + '&tw_p=tweetbutton&url=' + app_url);// + document.location.href);
+            }
         }
 
         function endGame() {
