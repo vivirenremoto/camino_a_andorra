@@ -481,7 +481,7 @@
         <br><br>
 
         <button onclick="location.reload();">¿Repetir?</button>
-        <button onclick="share()">Compartir</button>
+        <!--<button onclick="share()">Compartir</button>-->
 
     </div>
 
@@ -496,7 +496,7 @@
 
 
         <button onclick="location.reload();">¿Repetir?</button>
-        <button onclick="share()">Compartir</button>
+        <!--<button onclick="share()">Compartir</button>-->
     </div>
 
 
@@ -812,8 +812,13 @@
         }
 
         function share() {
-            window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + '&tw_p=tweetbutton&url=' + document.location.href);
-
+            var app_url = 'https://play.google.com/store/apps/details?id=com.CAMINO.A.ANDORRA';
+          
+            if(navigator.share !== undefined) {
+                navigator.share({title: document.title, text: app_url, url: app_url});
+            }else{
+                window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + '&tw_p=tweetbutton&url=' + app_url);// + document.location.href);
+            }
         }
 
         function endGame() {
