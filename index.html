@@ -337,9 +337,10 @@
         <div>
             <img class="logo" src="static/logo2.png?"><br>
             <button id="btn_start">EMPEZAR</button><br>
-            
-            <a href="https://bit.ly/2OlfEsJ" target="_blank"><img src="static/android.png" style="width: 160px;margin-top: 30px;border:0;"></a>
-            
+
+            <a href="https://bit.ly/2OlfEsJ" target="_blank"><img src="static/android.png"
+                    style="width: 160px;margin-top: 30px;border:0;"></a>
+
         </div>
         <img src="static/carr.gif?v" style="position:fixed;bottom:10px;left:50%;margin-left:-162px;">
     </div>
@@ -535,6 +536,7 @@
         var timer_game;
         var screen_height = $(document).height();
         var screen_width = $(document).width();
+        var screen_width_half = screen_width / 2;
         var screen_height_half = (screen_height / 2);
         var screen_height_half_half = (screen_height / 4) * 3;
         var start_round = false;
@@ -927,8 +929,16 @@
 
         $(function () {
 
-            $("body").click(function () {
+            $("body").click(function (e) {
                 playMusic1();
+
+                if (screen_width > 800) {
+                    if (screen_width_half < e.pageX) {
+                        moveRight();
+                    } else {
+                        moveLeft();
+                    }
+                }
             });
 
             $("body").keydown(function (e) {
