@@ -10,10 +10,6 @@
 
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-
-
 
     <meta property="og:image" content="https://vivirenremoto.github.io/camino_a_andorra/static/social.png">
     <meta property="og:image:secure_url" content="https://vivirenremoto.github.io/camino_a_andorra/static/social.png">
@@ -43,6 +39,21 @@
         * {
             font-family: 'VT323', monospace;
             text-transform: uppercase;
+        }
+
+        .money{color:yellow;}
+
+        #leaderboard {
+            position: fixed;
+            display: none;
+            text-align: center;
+            color: white;
+        }
+
+        #leaderboard td {
+            text-align: left;
+            background: black;
+
         }
 
         body {
@@ -142,11 +153,11 @@
             top: 50%;
             left: 50%;
             margin-left: -300px;
-            margin-top: -230px;
+            margin-top: -300px;
         }
 
         #intro button {
-            margin-top: 50px;
+            margin-top: 20px;
         }
 
         #intro img.logo {
@@ -157,6 +168,7 @@
         /* youtubers */
 
         #select_youtuber {
+            overflow-y: scroll;
             display: none;
             background: url('static/bg_intro.gif');
             background-size: cover;
@@ -235,6 +247,10 @@
             display: none;
         }
 
+        /* leaderboard */
+
+        #leaderboard td{font-size:20px;}
+
 
 
         @media screen and (max-width: 480px) {
@@ -282,7 +298,6 @@
 
             #select_youtuber {
                 padding: 40px 20px;
-                overflow-y: scroll;
             }
 
             /* car */
@@ -316,10 +331,77 @@
             }
 
             /* result */
+            
+            #result_winner,
+            #result_loser {
+                overflow-y:scroll;
+            }
+
+            
+            #result_winner button,
+            #result_loser button{
+                width:90%;
+                margin: 5px 0;
+            }
 
             #result_winner img,
             #result_loser img {
                 max-width: 100%;
+            }
+
+            /* leaderboard */
+
+            #leaderboard {
+                position: fixed;
+                width: 100%;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+            }
+
+            #leaderboard {
+                width: 90%;
+                margin: auto;
+                overflow-y: scroll;
+            }
+
+
+            #leaderboard {
+                width: 100%;
+            }
+
+            #leaderboard table {
+                width: 90%;
+                margin: auto;
+            }
+
+            #leaderboard_table {
+                margin-bottom: 50px;
+            }
+
+        }
+
+        @media screen and (min-width: 500px) {
+
+            #leaderboard {
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                overflow-y: scroll;
+            }
+
+            #leaderboard table {
+                width: 480px;
+                margin: auto;
+            }
+
+            
+            #result_winner br,
+            #result_loser br{
+                display:none;
             }
 
         }
@@ -337,13 +419,15 @@
         <div>
             <img class="logo" src="static/logo2.png?"><br>
             <button id="btn_start">EMPEZAR</button><br>
+            <button onclick="showLeaderboard()">Ranking</button><br>
 
             <a href="https://bit.ly/2OlfEsJ" target="_blank"><img src="static/android.png"
-                    style="width: 160px;margin-top: 30px;border:0;"></a>
+                    style="width: 160px;margin-top: 20px;border:0;"></a>
 
         </div>
         <img src="static/carr.gif?v" style="position:fixed;bottom:10px;left:50%;margin-left:-162px;">
     </div>
+
 
 
 
@@ -354,82 +438,82 @@
             <h2>elige youtuber</h2>
             <br>
 
-            <button onclick="selectYoutuber('rubius')"><img src="static/avatares/rubius.png"><br>jimdoblas</button>
+            <button onclick="selectYoutuber('rubius', this)"><img src="static/avatares/rubius.png"><br><span class="fake_name">jimdoblas</span></button>
 
-            <button onclick="selectYoutuber('grefg')"><img src="static/avatares/grefg.png"><br>GREFGORIO</button>
+            <button onclick="selectYoutuber('grefg', this)"><img src="static/avatares/grefg.png"><br><span class="fake_name">GREFGORIO</span></button>
 
-            <button onclick="selectYoutuber('lolito')"><img src="static/avatares/lolito.png"><br>POLLITO</button>
+            <button onclick="selectYoutuber('lolito', this)"><img src="static/avatares/lolito.png"><br><span class="fake_name">POLLITO</span></button>
 
-            <button onclick="selectYoutuber('willyrex')"><img src="static/avatares/willyrex.png"><br>MIAGIREX</button>
+            <button onclick="selectYoutuber('willyrex', this)"><img src="static/avatares/willyrex.png"><br><span class="fake_name">MIAGIREX</span></button>
 
-            <button onclick="selectYoutuber('vegetta')"><img src="static/avatares/vegetta777.png"><br>BAGUETTO</button>
-
-
-
-            <button onclick="selectYoutuber('alexby')"><img src="static/avatares/alexby.png?2"><br>ALEXBOYZ</button>
+            <button onclick="selectYoutuber('vegetta', this)"><img src="static/avatares/vegetta777.png"><br><span class="fake_name">BAGUETTO</span></button>
 
 
-            <button onclick="selectYoutuber('staxx')"><img src="static/avatares/staxx.png"><br>STEGG</button>
 
-            <button onclick="selectYoutuber('elmillor')"><img src="static/avatares/elmillor.png"><br>ElmenoR</button>
+            <button onclick="selectYoutuber('alexby', this)"><img src="static/avatares/alexby.png?2"><br><span class="fake_name">ALEXBOYZ</span></button>
+
+
+            <button onclick="selectYoutuber('staxx', this)"><img src="static/avatares/staxx.png"><br><span class="fake_name">STEGG</span></button>
+
+            <button onclick="selectYoutuber('elmillor', this)"><img src="static/avatares/elmillor.png"><br><span class="fake_name">ElmenoR</span></button>
 
             <button onclick="selectYoutuber('invicthor')"><img
-                    src="static/avatares/invicthor.png?"><br>invicthor</button>
+                    src="static/avatares/invicthor.png?"><br><span class="fake_name">invicthor</span></button>
 
-            <button onclick="selectYoutuber('zorman')"><img src="static/avatares/zorman.png"><br>morenito19</button>
+            <button onclick="selectYoutuber('zorman', this)"><img src="static/avatares/zorman.png"><br><span class="fake_name">morenito19</span></button>
 
-            <button onclick="selectYoutuber('elxokas')"><img src="static/avatares/elxokas.png"><br>elxuxes</button>
+            <button onclick="selectYoutuber('elxokas', this)"><img src="static/avatares/elxokas.png"><br><span class="fake_name">elxuxes</span></button>
 
             <button onclick="selectYoutuber('alexcapo')"><img
-                    src="static/avatares/alexcapo.png?"><br>AlexElChavo</button>
+                    src="static/avatares/alexcapo.png?"><br><span class="fake_name">AlexElChavo</span></button>
 
 
-            <button onclick="selectYoutuber('broncano')"><img src="static/avatares/broncano.png"><br>forky</button>
+            <button onclick="selectYoutuber('broncano', this)"><img src="static/avatares/broncano.png"><br><span class="fake_name">forky</span></button>
 
 
-            <button onclick="selectYoutuber('guinxu')"><img src="static/avatares/guinxu.png"><br>chinxu</button>
+            <button onclick="selectYoutuber('guinxu', this)"><img src="static/avatares/guinxu.png"><br><span class="fake_name">chinxu</span></button>
 
-            <button onclick="selectYoutuber('alvamajo')"><img src="static/avatares/alvamajo.png"><br>alvamalo</button>
+            <button onclick="selectYoutuber('alvamajo', this)"><img src="static/avatares/alvamajo.png"><br><span class="fake_name">alvamalo</span></button>
 
             <button onclick="selectYoutuber('cristinini')"><img
-                    src="static/avatares/cristinini.png"><br>marianini</button>
+                    src="static/avatares/cristinini.png"><br><span class="fake_name">marianini</span></button>
 
 
 
 
-            <button onclick="selectYoutuber('ibai')"><img src="static/avatares/ibai.png"><br>ebai</button>
+            <button onclick="selectYoutuber('ibai', this)"><img src="static/avatares/ibai.png"><br><span class="fake_name">ebai</span></button>
 
 
-            <button onclick="selectYoutuber('barbe')"><img src="static/avatares/barbe.png"><br>elbarbez</button>
+            <button onclick="selectYoutuber('barbe', this)"><img src="static/avatares/barbe.png"><br><span class="fake_name">elbarbez</span></button>
 
             <button onclick="selectYoutuber('jordiwild')"><img
-                    src="static/avatares/jordiwild.png"><br>jesuswild</button>
+                    src="static/avatares/jordiwild.png"><br><span class="fake_name">jesuswild</span></button>
 
             <button onclick="selectYoutuber('auronplay')"><img
-                    src="static/avatares/auronplay.png"><br>gañanplay</button>
+                    src="static/avatares/auronplay.png"><br><span class="fake_name">gañanplay</span></button>
 
-            <button onclick="selectYoutuber('picodeoro')"><img src="static/avatares/picodeoro.png"><br>picorro</button>
+            <button onclick="selectYoutuber('picodeoro', this)"><img src="static/avatares/picodeoro.png"><br><span class="fake_name">picorro</span></button>
 
-            <button onclick="selectYoutuber('folagor')"><img src="static/avatares/folagor.png"><br>folgachu</button>
+            <button onclick="selectYoutuber('folagor', this)"><img src="static/avatares/folagor.png"><br><span class="fake_name">folgachu</span></button>
 
-            <button onclick="selectYoutuber('pedroseo')"><img src="static/avatares/pedroseo.png"><br>pedroxeo</button>
-            <button onclick="selectYoutuber('lmdshow')"><img src="static/avatares/lmdshow.png"><br>lsdshow</button>
+            <button onclick="selectYoutuber('pedroseo', this)"><img src="static/avatares/pedroseo.png"><br><span class="fake_name">pedroxeo</span></button>
+            <button onclick="selectYoutuber('lmdshow', this)"><img src="static/avatares/lmdshow.png"><br><span class="fake_name">lsdshow</span></button>
 
-            <button onclick="selectYoutuber('knekro')"><img src="static/avatares/knekro.png"><br>Kangrejo</button>
+            <button onclick="selectYoutuber('knekro', this)"><img src="static/avatares/knekro.png"><br><span class="fake_name">Kangrejo</span></button>
 
 
-            <button onclick="selectYoutuber('brakal')"><img src="static/avatares/brakal.png"><br>bragal</button>
-            <button onclick="selectYoutuber('wismichu')"><img src="static/avatares/wismichu.png"><br>guismichu</button>
+            <button onclick="selectYoutuber('brakal', this)"><img src="static/avatares/brakal.png"><br><span class="fake_name">bragal</span></button>
+            <button onclick="selectYoutuber('wismichu', this)"><img src="static/avatares/wismichu.png"><br><span class="fake_name">guismichu</span></button>
 
             <button onclick="selectYoutuber('angelmartin')"><img
-                    src="static/avatares/angelmartin.png"><br>businesangel</button>
+                    src="static/avatares/angelmartin.png"><br><span class="fake_name">businesangel</span></button>
 
 
-            <button onclick="selectYoutuber('kfc')"><img src="static/avatares/kfc.png"><br>kgb</button>
+            <button onclick="selectYoutuber('kfc', this)"><img src="static/avatares/kfc.png"><br><span class="fake_name">kgb</span></button>
 
-            <button onclick="selectYoutuber('romuald')"><img src="static/avatares/romuald.png"><br>reydelseo</button>
+            <button onclick="selectYoutuber('romuald', this)"><img src="static/avatares/romuald.png"><br><span class="fake_name">reydelseo</span></button>
 
-            <button onclick="selectYoutuber('dcuesta')"><img src="static/avatares/dcuesta.png"><br>choribibi</button>
+            <button onclick="selectYoutuber('dcuesta', this)"><img src="static/avatares/dcuesta.png"><br><span class="fake_name">choribibi</span></button>
 
         </div>
     </div>
@@ -489,18 +573,33 @@
     <div id="result_winner">
 
         <h2>BIENVENIDO</h2>
+        <h3 class="money"></h3>
+
         <br>
         <img src="static/welcome.png">
         <br><br>
 
-        <button onclick="location.reload();">¿Repetir?</button>
-        <button onclick="share()">Compartir</button>
+        
+        <div class="actions" style="display:none">
+            <button onclick="location.reload();">¿Repetir?</button>
+            <button onclick="share()">Compartir</button>
 
-        <button onclick="window.open('https://www.buymeacoffee.com/vivirenremoto')">Apoyar</button>
+
+            <button class="btn_save">Guardar puntuación</button>
+            <button onclick="showLeaderboard()">Ranking</button>
+
+            <button onclick="window.open('https://www.buymeacoffee.com/vivirenremoto')">Apoyar</button>
+   
+        </div>
+
+
+
     </div>
 
     <div id="result_loser">
         <h2 style="color:red">GAME OVER</h2>
+        <h3 class="money"></h3>
+
         <h3>NO TE PUEDES QUEDAR</h3>
         <h3>NECESITAS 15.000€ DE DEPÓSITO</h3>
         <br>
@@ -508,11 +607,34 @@
         <br><br>
 
 
-        <button onclick="location.reload();">¿Repetir?</button>
-        <button onclick="share()">Compartir</button>
+        <div class="actions" style="display:none">
+            <button onclick="location.reload();">¿Repetir?</button>
+            <button onclick="share()">Compartir</button>
 
-        <button onclick="window.open('https://www.buymeacoffee.com/vivirenremoto')">Apoyar</button>
+
+            <button class="btn_save">Guardar puntuación</button>
+            <button onclick="showLeaderboard()">Ranking</button>
+
+            <button onclick="window.open('https://www.buymeacoffee.com/vivirenremoto')">Apoyar</button>
+   
+        </div>
     </div>
+
+    <div id="leaderboard">
+        <h2 style="font-size:40px;margin-bottom:15px;">Ranking</h2>
+        <table id="leaderboard_table" width="100%" cellpadding="5" cellspacing="1" bgcolor="white">
+            <tr>
+                <td>Pos</td>
+                <td>Nick</td>
+                <td>Euros</td>
+            </tr>
+        </table>
+
+        <button onclick="hideLeaderboard()" class="btn btn_primary">VOLVER</button>
+
+        <br><br><br>
+    </div>
+
 
 
     <audio id="bg_music1" loop>
@@ -525,8 +647,17 @@
     </audio>
 
 
+        
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/vivirenremoto/confetti.js/confetti.min.js"></script>
+
 
     <script>
+        var youtuber_name;
+        var game_played = false;
         var time_left = 60;
         var enemy_item;
         var car_pos = 0;
@@ -604,6 +735,10 @@
             moveRight();
         });
 
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+
         function playMusic1() {
             if (!music_playing1) {
                 music_playing1 = true;
@@ -619,7 +754,9 @@
 
         }
 
-        function selectYoutuber(name) {
+        function selectYoutuber(name, obj) {
+
+            youtuber_name = name;//$(obj).find('.fake_name').html().trim();
 
 
             if (name == 'rubius') {
@@ -659,12 +796,82 @@
 
         }
 
+        
+        function showLeaderboard() {
+
+            $('#intro').hide();
+            $('#result_winner').hide();
+            $('#result_loser').hide();
+            $('#leaderboard').show();
+
+
+            $("#leaderboard_table").html('<tr><td>Pos</td><td>Nick</td><td>Euros</td></tr>');
+
+
+            $.getJSON("https://games.vivirenremoto.com/?game=andorra&action=rank", function (data) {
+                var items = [];
+                $.each(data, function (key, val) {
+
+                    var emoji = '';
+
+                    if (key == 0) {
+                        emoji = '🥇 ';
+                    } else if (key == 1) {
+                        emoji = '🥈 ';
+                    } else if (key == 2) {
+                        emoji = '🥉 ';
+                    } else {
+                        emoji = key + 1;
+                    }
+
+
+                    var t_name = val.name.split('-----');
+
+                    items.push('<tr><td width="1">' + emoji + '</td><td width="70%"><img src="static/avatares/' + t_name[1] + '.png" align="absmiddle" width="30" height="30"> ' + t_name[0] + '</td><td width="30%">' + numberWithCommas(val.score) + '</td></tr>');
+                });
+
+                $("#leaderboard_table").append(items.join(""));
+
+
+            });
+
+
+
+
+
+            $('#intro').hide();
+            $('#leaderboard').show();
+
+
+            $('#leaderboard').scrollTop(0);
+        }
+
+        function hideLeaderboard() {
+
+            if (game_played) {
+
+                if (score > 15000) {
+                    $('#result_winner').show();
+
+                } else {
+                    $('#result_loser').show();
+                }
+
+
+            } else {
+                $('#intro').show();
+            }
+
+            $('#leaderboard').hide();
+        }
+
+
         function startGame() {
             $('#select_car').hide();
             $('#game').show();
 
 
-
+            game_played = true;
 
 
             setInterval(function () {
@@ -828,7 +1035,15 @@
         }
 
         function share() {
-            window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + '&tw_p=tweetbutton&url=' + document.location.href);
+
+
+            var share_message = document.title;
+            if (score) {
+                share_message += ' 👊 ¡Supera mi puntuación! 🔥' + numberWithCommas(score) + ' €';
+            }
+
+
+            window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(share_message) + '&tw_p=tweetbutton&url=' + document.location.href);
 
         }
 
@@ -836,13 +1051,63 @@
             music2.pause();
             music1.play();
 
+
+            $('.money').html( numberWithCommas(score) + ' €' );
+
             $('#game').hide();
 
             if (score > 15000) {
                 $('#result_winner').show();
+                
+
+                confetti.start();
+
+                setTimeout(function () {
+                    confetti.stop();
+                }, 2000);
+
             } else {
                 $('#result_loser').show();
             }
+
+
+            setTimeout(function () {
+
+
+                if (score) {
+
+                    $('.btn_save').click(function () {
+
+                        $('.btn_save').hide();
+
+                        var nickname = prompt("¿CUAL ES TU NOMBRE? - RANKING");
+                        if (nickname) {
+                            $.ajax({
+                                type: "POST",
+                                url: "https://games.vivirenremoto.com/",
+                                dataType: "json",
+                                data: {
+                                    action: 'add',
+                                    game: 'andorra',
+                                    name: nickname + '-----' + youtuber_name,
+                                    score: score
+                                },
+                                success: function (data) {
+                                    alert('TU POSICIÓN: ' + data.rank);
+                                }
+                            });
+                        }
+                    });
+                } else {
+
+                    $('.btn_save').hide();
+                }
+
+
+                $('.actions').show();
+
+            }, 200 * 5);
+
 
         }
 
