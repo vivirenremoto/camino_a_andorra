@@ -766,6 +766,8 @@
 
             if (name == 'rubius') {
                 score = 4000000;
+            }else if (name == 'alvamajo') {
+                score = followers.alvamajo;
             } else {
                 var seguidores = followers[name];
                 score = (seguidores * 4000000) / followers.rubius;
